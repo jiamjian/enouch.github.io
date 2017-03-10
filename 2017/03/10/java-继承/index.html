@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="转换后只调用继承自A的方法，B中独有的方法被遮盖。">
+<meta name="description" content="继承转换后只调用继承自A的方法，B中独有的方法被遮盖。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 继承">
 <meta property="og:url" content="http://yoursite.com/2017/03/10/Java-继承/index.html">
 <meta property="og:site_name" content="My Space">
-<meta property="og:description" content="转换后只调用继承自A的方法，B中独有的方法被遮盖。">
-<meta property="og:updated_time" content="2017-03-10T09:11:37.000Z">
+<meta property="og:description" content="继承转换后只调用继承自A的方法，B中独有的方法被遮盖。">
+<meta property="og:updated_time" content="2017-03-10T09:15:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 继承">
-<meta name="twitter:description" content="转换后只调用继承自A的方法，B中独有的方法被遮盖。">
+<meta name="twitter:description" content="继承转换后只调用继承自A的方法，B中独有的方法被遮盖。">
 
 
 
@@ -367,7 +367,7 @@
       
 
       
-        <p>转换后只调用继承自A的方法，B中独有的方法被遮盖。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class TestChange &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		A a = new B();</div><div class="line">		a.method();//调用B的方法</div><div class="line">		//a.method2(); 错误，不能调用B独有的方法</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">class A &#123;</div><div class="line">	</div><div class="line">	public void method () &#123;</div><div class="line">		System.out.print(&quot;A&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class B extends A &#123;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void method() &#123;</div><div class="line">		System.out.print(&quot;B&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public void method2() &#123;</div><div class="line">		System.out.print(&quot;C&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>转换后只调用继承自A的方法，B中独有的方法被遮盖。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">public class TestChange &#123;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		A a = new B();</div><div class="line">		a.method();//调用B的方法</div><div class="line">		//a.method2(); 错误，不能调用B独有的方法</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">class A &#123;</div><div class="line">	</div><div class="line">	public void method () &#123;</div><div class="line">		System.out.print(&quot;A&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class B extends A &#123;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void method() &#123;</div><div class="line">		System.out.print(&quot;B&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public void method2() &#123;</div><div class="line">		System.out.print(&quot;C&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -414,6 +414,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2017/03/10/Mweb-markdown-常用快捷键/" rel="prev" title="Mweb markdown 常用快捷键">
+                Mweb markdown 常用快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -459,8 +463,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -475,7 +488,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -486,7 +499,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -497,7 +510,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -522,6 +535,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">1.</span> <span class="nav-text">继承</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
