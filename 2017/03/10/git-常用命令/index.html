@@ -89,7 +89,7 @@
 
 <meta name="description" content="创建版本库
 创建git $ git init
-添加文件到git $ git add readme.txt
+跟踪新文件 $ git add file
 提交到仓库 $ git commit -m &amp;quot;wrote a readme file&amp;quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git 常用命令">
@@ -97,14 +97,14 @@
 <meta property="og:site_name" content="My Space">
 <meta property="og:description" content="创建版本库
 创建git $ git init
-添加文件到git $ git add readme.txt
+跟踪新文件 $ git add file
 提交到仓库 $ git commit -m &amp;quot;wrote a readme file&amp;quot;">
-<meta property="og:updated_time" content="2017-03-10T09:14:36.000Z">
+<meta property="og:updated_time" content="2017-03-13T09:55:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git 常用命令">
 <meta name="twitter:description" content="创建版本库
 创建git $ git init
-添加文件到git $ git add readme.txt
+跟踪新文件 $ git add file
 提交到仓库 $ git commit -m &amp;quot;wrote a readme file&amp;quot;">
 
 
@@ -378,19 +378,54 @@
       
         <h2 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h2><ul>
 <li>创建git <code>$ git init</code></li>
-<li>添加文件到git <code>$ git add readme.txt</code></li>
+<li>跟踪新文件 <code>$ git add file</code></li>
 <li>提交到仓库 <code>$ git commit -m &quot;wrote a readme file&quot;</code></li>
 </ul>
 <a id="more"></a> 
 <h2 id="查看git状态"><a href="#查看git状态" class="headerlink" title="查看git状态"></a>查看git状态</h2><ul>
 <li>查看git状态 <code>$ git status</code></li>
-<li>查看修改 <code>$ git diff readme.txt</code></li>
+<li>查看修改 <code>$ git diff file</code></li>
 <li>查看版本信息 <code>$ git log</code></li>
 <li>查看每次命令 <code>$ git reflog</code></li>
 </ul>
 <h2 id="版本退回"><a href="#版本退回" class="headerlink" title="版本退回"></a>版本退回</h2><ul>
 <li>退回上个版本 <code>$ git reset --hard HEAD^</code></li>
 <li>退回指定版本号 <code>$ git reset --hard 3628164</code></li>
+<li>删除 <code>$ rm file</code></li>
+</ul>
+<h2 id="克隆"><a href="#克隆" class="headerlink" title="克隆"></a>克隆</h2><ul>
+<li>克隆并命名为file <code>git clone git://github.com/schacon/grit.git file</code></li>
+</ul>
+<h2 id="忽略文件"><a href="#忽略文件" class="headerlink" title="忽略文件"></a>忽略文件</h2><ul>
+<li>第一行告诉 Git 忽略所有以 .o 或 .a 结尾的文件。一般这类对象文件和存档文件都是编译过程中出现的，我们用不着跟踪它们的版本。第二行告诉 Git 忽略所有以波浪符（~）结尾的文件，许多文本编辑软件（比如 Emacs）都用这样的文件名保存副本。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cat .gitignore</div><div class="line">*.[oa]</div><div class="line">*~</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h2><ul>
+<li>撤销工作区 <code>$ git checkout -- file</code></li>
+<li>撤销暂存区 <code>$ git reset HEAD file</code></li>
+</ul>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><ul>
+<li>本地库连接到github。<br><code>git remote add origin https://github.com/enouch/learngit.git</code></li>
+<li>本地库推送到github第一次有-u。<code>git push -u origin master</code></li>
+</ul>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><ul>
+<li>创建并切换到dev分支 <code>$ git checkout -b dev</code></li>
+<li>查看当前分支 <code>$ git branch</code></li>
+<li>切换到master分支 <code>$ git checkout master</code></li>
+<li>合并分支dev，命令用于合并指定分支到当前分支。 <code>$ git merge dev</code></li>
+<li>删除dev分支<code>$ git branch -d dev</code></li>
+<li>分支图 <code>$ git log --graph</code></li>
+<li>发生冲突时需要手动解决冲突，才能继续合并。</li>
+<li>合并分支时，加上<code>--no-ff</code>参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</li>
+<li>当手头工作没有完成时，先把工作现场<code>$ git stash</code>一下，然后去修复bug，修复后，再<code>$ git stash pop</code>，回到工作现场。</li>
+<li>如果要丢弃一个没有被合并过的分支，可以通过<code>$git branch -D &lt;name&gt;</code>强行删除。</li>
+<li>不在master工作，在dev工作，新特性用新的分支。</li>
+</ul>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ul>
+<li>打标签 <code>$ git tag v1.0</code></li>
+<li>给对应的commit打标签 <code>$ git tag v0.9 6224937</code></li>
+<li>查看标签 <code>$ git tag</code></li>
+<li>删除标签<code>$ git tag -d v0.1</code></li>
 </ul>
 
       
@@ -569,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建版本库"><span class="nav-number">1.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看git状态"><span class="nav-number">2.</span> <span class="nav-text">查看git状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本退回"><span class="nav-number">3.</span> <span class="nav-text">版本退回</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建版本库"><span class="nav-number">1.</span> <span class="nav-text">创建版本库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看git状态"><span class="nav-number">2.</span> <span class="nav-text">查看git状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本退回"><span class="nav-number">3.</span> <span class="nav-text">版本退回</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#克隆"><span class="nav-number">4.</span> <span class="nav-text">克隆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#忽略文件"><span class="nav-number">5.</span> <span class="nav-text">忽略文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撤销修改"><span class="nav-number">6.</span> <span class="nav-text">撤销修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程仓库"><span class="nav-number">7.</span> <span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支"><span class="nav-number">8.</span> <span class="nav-text">分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签"><span class="nav-number">9.</span> <span class="nav-text">标签</span></a></li></ol></div>
             
 
           </div>
